@@ -49,7 +49,7 @@ Los servicios interesados en estas actualizaciones son OrderService y BasketServ
   * Warehouse
 
 ### Order Service
-Servicio encrgado de generar la orden de compra al confirmarla. Debe orquestar el manejo del stock, notificaciones por mail al cliente y mediar con el servidor de pagos y coordinar los plazos envío. Utilizag gRPC para realizar para dialogar con los demas servicios. Utiliza una BD Postgres
+Servicio encrgado de generar la orden de compra al confirmarla. Debe orquestar el manejo del stock, notificaciones por mail al cliente y mediar pagos con Payment Service y coordinar los plazos envío con el Shipping Service. Utilizag gRPC para realizar para dialogar con los demas servicios. Utiliza una BD Postgres. Dado la importancia central del mismo, deberá implementar transaccionalidad utilizando un patrón Saga.
 
 #### Esquema de datos
 * Tabla Order:  
@@ -84,9 +84,22 @@ Servicio de carro de compras. Acumula los productos comprados por el cliente. Es
   * ClientGUID
   * ItemList
  
-### Shipping Service
-
 ### Payment Service
+Servicio de pagos que mediará con algun/algunos provedores de pago. No requerirá una base de dastos propia y aplicará patrones Strategy y Adapter para poder incorporar diferentes PSPs.
+Publica en el back channel cuando logra realizar un pago, o bien falla.
 
+#### Esquema de datos
+* Tabla Payments
+  * PaymentGUID
+  * OrderGUID
+  * CardName
+  * CardNumber
+  * Expiration
+  * PaymentMethod
+  * Status
+  * Mail
+    
 ### Notification Service
+
+### Shipping Service
 
