@@ -72,12 +72,17 @@ Servicio encrgado de generar la orden de compra al confirmarla. Debe orquestar e
   * Quantity
   * GUID
   * OrdeDate
-  * Mail     //Es otro mail?
+  * Mail     //Es otro mail?  
   * TotalAmount    
 
 
 ### Basket Service
-Servicio de carro de compras. Acumula los productos comprados por el cliente. Está suscrito a las notificaciones de los servicios de Catalog y Stock para saber en tiempo real si un producto esta disponible y tener su descripcion actualizada, y no esperar a refrescarla en el momento de confirmar la compra. También debe estar suscrito a las notificaciones de Order Service para destruir el carrito una vez confirmada la compra.
+Servicio de carro de compras. Acumula los productos comprados por el cliente. Está suscrito a las notificaciones de los servicios de Catalog y Stock para saber en tiempo real si un producto esta disponible y tener su descripcion actualizada, y no esperar a refrescarla en el momento de confirmar la compra. También debe estar suscrito a las notificaciones de Order Service para destruir el carrito una vez confirmada la compra. Utilizará una base de datos en memoria Redis
+
+#### Esquema de datos
+* Tabla Basket
+  * ClientGUID
+  * ItemList
  
 ### Shipping Service
 
