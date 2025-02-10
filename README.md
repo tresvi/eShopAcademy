@@ -32,7 +32,7 @@ Publica en el Back channel cuando:
       * Description 
 
 #### Actores
-Clientes: Rol de Lectura
+Clientes: Rol de Lectura  
 Admin: ABML
 
 ### Stock Service
