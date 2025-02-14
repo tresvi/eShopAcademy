@@ -15,7 +15,7 @@ Sistema completo de venta implementado con patron arquitectónico de microservic
 ## Servicios Backend
 
 ### Product Catalog Service
-Servicio que provee el catalogo de productos. Los datos son almacenados en una BD Cassandra. Consta de una Api para exponer todas las funcionalidades de ABM de un producto, y un Servicio Processor para brindar mantener la conectividad con los demas microservicios por medio interface gRPC.
+Servicio que provee el catalogo de productos. Los datos son almacenados en una BD Cassandra. Consta de una Api para exponer todas las funcionalidades de ABM de un producto, y un Servicio Processor para mantener la conectividad con los demas microservicios por medio de una interface gRPC.
 Publica en el Back channel cuando:
 
 
